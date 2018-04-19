@@ -43,6 +43,35 @@
 			</props>
 		</property>
 	</bean>
+	
+		<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+			  <property name="maxUploadSize" value="10240000"/>
+		</bean>
+	
+
+			<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+			  <property name="defaultViews">
+			    <list>
+			      <ref bean="xmlView"/>
+			    </list>
+			  </property>
+			  
+		</bean>
+			
+
+
+			<bean id="xmlView" class="org.springframework.web.servlet.view.xml.MarshallingView">
+			  <constructor-arg>
+			    <bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+			      <property name="classesToBeBound">
+			        <list>
+			          <value>com.online.webstore.model.Product</value>
+			        </list>
+			      </property>
+			    </bean>
+			  </constructor-arg>
+		</bean>
+		
 
 <bean id="persistenceExceptionTranslationPostProcessor"
         class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>

@@ -2,16 +2,24 @@ package com.online.webstore.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name="PRODUCT")
+@XmlRootElement
 public class Product {
 
 	
@@ -40,6 +48,19 @@ public class Product {
 	private boolean discontinued;
 	@Column(name="CONDITION")
 	private String condition;
+	
+	@Lob @Basic(fetch = FetchType.LAZY)
+    @Column(name="productImage", nullable=true)
+	private MultipartFile  productImage;
+
+	@XmlTransient
+	public MultipartFile getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
 
 	public Product() {
 

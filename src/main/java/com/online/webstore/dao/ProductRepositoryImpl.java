@@ -9,6 +9,7 @@ import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.jms.Session;
+import javax.naming.NoPermissionException;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -19,6 +20,7 @@ import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.online.webstore.exception.ProductNotFoundException;
 import com.online.webstore.model.Product;
 
 @Repository
@@ -47,7 +49,7 @@ public class ProductRepositoryImpl extends AbstractDao implements ProductReposit
 		
 		Product p = (Product) getSession().get(Product.class, productId);
 		if (p == null) {
-			throw new IllegalArgumentException("No products found with the product id: " + productId);
+			throw new ProductNotFoundException("No products found with the product id: " + productId);
 		}
 		return p;
 	}

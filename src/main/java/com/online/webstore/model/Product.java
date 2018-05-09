@@ -12,6 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -30,7 +34,12 @@ public class Product {
 	private Integer productId;
 
 	@Column(name="NAME")
+	@Size(min=4,max=50,message="{Size.Product.name.validation}")
 	private String name;
+	
+	@Min(value=0, message="Min.Product.unitPrice.validation}")
+	@Digits(integer=8, fraction=2, message="{Digits.Product.unitPrice.validation}")
+	@NotNull(message= "{NotNull.Product.unitPrice.validation}")
 	@Column(name="UNIT_PRICE")
 	private BigDecimal unitPrice;
 	

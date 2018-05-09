@@ -19,55 +19,64 @@
 		</div>
 	</section>
 
+<div class="pull-right" style="padding-right:50px">
+  <a href="?language=en" >English</a>|<a href="?language=nl" >Dutch</a>
+</div>
+
+
 	<section class="container">
 		<form:form modelAttribute="newProduct" class="form-horizontal" enctype="multipart/form-data">
+
+<form:errors path="*" cssClass="alert alert-danger" element="div"/>
 
 			<fieldset>
 				<legend>Add new product</legend>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="name"><spring:message code="addProduct.form.name"></spring:message></label>
+					<label class="control-label col-lg-2 col-lg-2" for="name"><spring:message code="addProduct.form.name.label"></spring:message></label>
 					<div class="col-lg-10">
 						<form:input path="name" id="name" type="text"
 							class="form:input-large" />
+							<form:errors path="name" cssClass="text-danger"/>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="unitPrice">Unit
-						Price</label>
+					<label class="control-label col-lg-2 col-lg-2" for="unitPrice"><spring:message code="addProduct.form.unitPrice.label"></spring:message></label>
 					<div class="col-lg-10">
 						<form:input path="unitPrice" id="unitPrice" type="text"
 							class="form:input-large" />
+							<form:errors path="unitPrice" cssClass="text-danger"></form:errors>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="description">Description</label>
+					<label class="control-label col-lg-2 col-lg-2" for="description"><spring:message code="addProduct.form.description.label"></spring:message></label>
 					<div class="col-lg-10">
 						<form:textarea path="description" id="description" rows="2" />
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="manufacturer">Manufacturer</label>
+					<label class="control-label col-lg-2 col-lg-2" for="manufacturer"><spring:message code="addProduct.form.manufacturer.label"></spring:message> </label>
 					<div class="col-lg-10">
 						<form:input path="manufacturer" id="manufacturer"
 							name="manufacturer" class="form:input-large" />
+							<form:errors path="manufacturer" cssClass="text-danger"></form:errors>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="category">Category</label>
+					<label class="control-label col-lg-2 col-lg-2" for="category"><spring:message code="addProduct.form.category.label"></spring:message></label>
 					<div class="col-lg-10">
 						<form:input path="category" id="category" name="category"
 							class="form:input-large" />
+							<form:errors path="category" cssClass="text-danger"></form:errors>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="unitsInStock">Unit
-						In Stock</label>
+					<label class="control-label col-lg-2 col-lg-2" for="unitsInStock"><spring:message code="addProduct.form.unitsInStock.label"></spring:message> </label>
 					<div class="col-lg-10">
 						<form:input path="unitsInStock" id="unitsInStock"
 							name="unitsInStock" class="form:input-large" />
@@ -78,7 +87,7 @@
 				
 
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="condition">Condition</label>
+					<label class="control-label col-lg-2" for="condition"><spring:message code="addProduct.form.condition.label"></spring:message> </label>
 					<div class="col-lg-10">
 						<form:radiobutton path="condition" value="New" />
 						New
@@ -90,9 +99,9 @@
 				</div>
 
 				<div class="form-group">
-				  <label class="control-label col-lg-2" for="productImage"><spring:message code="addProdcut.form.productImage.label"/></label>
+				  <label class="control-label col-lg-2" for="productImage"><spring:message code="addProduct.form.productImage.label"></spring:message></label>
 				  <div class="col-lg-10">
-				    <form:input id="productImage" path="productImage"type="file" class="form:input-large" />
+				    <form:input id="productImage" path="productImage" type="file" class="form:input-large" />
 				  </div>
 			</div>
 
